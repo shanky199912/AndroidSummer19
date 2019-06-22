@@ -24,11 +24,12 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         //Intent to open Phone Dialer
 //        val i = Intent(Intent.ACTION_DIAL, Uri.parse("tel:${edt1.text.toString()}"))
 
+        val i = Intent(this,Main2Activity.class.)
 
         //Intent to open Gmail
-        val i = Intent(Intent.ACTION_SEND)
+      /*  val i = Intent(Intent.ACTION_SEND)
         i.putExtra(Intent.EXTRA_TEXT,"Byeeee") // Body
-        startActivity(Intent.createChooser(i,"Send Email"))
+        startActivity(Intent.createChooser(i,"Send Email"))*/
     }
 
     private var btnViews = arrayOfNulls<Button>(3)
