@@ -5,12 +5,15 @@
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".Main2Activity">
+        tools:context=".MainActivity">
 
-    <androidx.appcompat.widget.Toolbar android:layout_width="match_parent"
-                                       android:layout_height="?actionBarSize"
-    android:id="@+id/toolbar2">
+    <androidx.appcompat.widget.Toolbar
+            android:layout_width="match_parent"
+             android:id="@+id/toobar"
+             android:layout_height="?actionBarSize"
+             android:background="@color/colorAccent">
 
     </androidx.appcompat.widget.Toolbar>
+    <!--  there are two toolbars app.compact and app.widget-->
 
 </LinearLayout>
