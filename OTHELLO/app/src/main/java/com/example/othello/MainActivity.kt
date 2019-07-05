@@ -1,13 +1,16 @@
 package com.example.othello
 
+import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import android.view.ViewGroup
 import android.widget.Button
 import android.widget.LinearLayout
 import androidx.core.view.marginLeft
+import kotlinx.android.synthetic.main.activity_main.*
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), View.OnClickListener {
 
     lateinit var ll: LinearLayout
     lateinit var ll1: LinearLayout
@@ -24,7 +27,27 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        //setContentView(R.layout.activity_main)
+        // setContentView(R.layout.activity_main)
+
+        buttonArray = Array(8) {
+
+            Array(8) {
+
+                Button(this)
+            }
+        }
+
+
+        /* for (i in 0..7) {
+             for (j in 0..7) {
+
+                 val buttonId = "bt$i$j"
+                 resources.getIdentifier(buttonId, "id", packageName).apply {
+                     buttonArray[i]!![j] = findViewById(this)
+                 }
+                 buttonArray[i]!![j].setOnClickListener(this@MainActivity)
+             }
+         }*/
 
 
         /**
@@ -34,8 +57,8 @@ class MainActivity : AppCompatActivity() {
         ll.orientation = LinearLayout.HORIZONTAL
 
         ll.layoutParams = LinearLayout.LayoutParams(
-            LinearLayout.LayoutParams.MATCH_PARENT,
-            LinearLayout.LayoutParams.MATCH_PARENT
+            LinearLayout.LayoutParams.WRAP_CONTENT,
+            LinearLayout.LayoutParams.WRAP_CONTENT
         )
 
         ll1 = LinearLayout(this)
@@ -46,131 +69,63 @@ class MainActivity : AppCompatActivity() {
             LinearLayout.LayoutParams.WRAP_CONTENT, 1.0f
         )
 
-        button = Array(8){
-            Array(8){
+        ll.removeAllViews()
+        ll1.removeAllViews()
+
+        button = Array(8) {
+            Array(8) {
                 Button(this)
             }
         }
-
 
 
         llayout = Array(8) {
             LinearLayout(this)
         }
 
-        llayout.forEach {
+        for (i in 0..7) {
 
-            val apply = it.apply {
+            /*llayout.forEach {
 
-
-                for (j in 1..8) {
-
-                    button[1]!![j].minHeight = 0
-                    button[1]!![j].minWidth = 0
-                    button[1]!![j].setBackgroundColor(resources.getColor(R.color.colorPrimaryDark))
-                    ll1.addView(button[1]!![j])
-                }
-
-                for (j in 1..8) {
+                val apply = it?.apply {*/
 
 
-                    button[2]!![j].minHeight = 0
-                    button[2]!![j].minWidth = 0
-                    button[2]!![j].setBackgroundColor(resources.getColor(R.color.colorPrimaryDark))
-                    ll1.addView(button[2]!![j])
-                }
+            for (j in 0..7) {
 
-                for (j in 1..8) {
+               button[i]!![j].layoutParams = LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT,
+                   LinearLayout.LayoutParams.WRAP_CONTENT)
+                button[i]!![j].setBackgroundColor(resources.getColor(R.color.colorPrimaryDark))
+                /*if (button[i]!![j].parent != null) {
 
-
-                    button[3]!![j].minHeight = 0
-                    button[3]!![j].minWidth = 0
-                    button[3]!![j].setBackgroundColor(resources.getColor(R.color.colorPrimaryDark))
-                    ll1.addView(button[3]!![j])
-                }
-
-                for (j in 1..8) {
-
-                    button[4]!![j].minHeight = 0
-                    button[4]!![j].minWidth = 0
-                    button[4]!![j].setBackgroundColor(resources.getColor(R.color.colorPrimaryDark))
-                    ll1.addView(button[4]!![j])
-                }
-
-                for (j in 1..8) {
-
-
-                    button[5]!![j].minHeight = 0
-                    button[5]!![j].minWidth = 0
-                    button[5]!![j].setBackgroundColor(resources.getColor(R.color.colorPrimaryDark))
-                    ll1.addView(button[5]!![j])
-                }
-
-                for (j in 1..8) {
-
-
-                    button[6]!![j].minHeight = 0
-                    button[6]!![j].minWidth = 0
-                    button[6]!![j].setBackgroundColor(resources.getColor(R.color.colorPrimaryDark))
-                    ll1.addView(button[6]!![j])
-                }
-
-                for (j in 1..8) {
-
-
-                    button[7]!![j].minHeight = 0
-                    button[7]!![j].minWidth = 0
-                    button[7]!![j].setBackgroundColor(resources.getColor(R.color.colorPrimaryDark))
-                    ll1.addView(button[7]!![j])
-                }
-
-                for (j in 1..8) {
-
-                    button[8]!![j].minHeight = 0
-                    button[8]!![j].minWidth = 0
-                    button[8]!![j].setBackgroundColor(resources.getColor(R.color.colorPrimaryDark))
-                    ll1.addView(button[8]!![j])
-                }
-
-
+                    (button[i]!![j].parent as ViewGroup).removeView(button[i]!![j])
+                }*/
+                ll1.addView(button[i]!![j])
             }
 
-            ll.addView(apply)
-        }
-
-        /* *
-         * Initializing the 2D Array of Nulls
-
-        buttonArray = Array(8) {
-
-            Array(8) {
-
-                Button(this)
+            if (ll1.parent != null) {
+                (ll1.parent as ViewGroup).removeView(ll1)
             }
+            ll.addView(ll1)
         }
 
-        *
-         * Setting the on click Listener to the buttonArray
 
+       /* startGame.setOnClickListener {
 
-        for (i in 1..8) {
-            for (j in 1..8) {
+            buttonArray[3]!![3].text = "\u2B24"
+            buttonArray[3]!![4].text = "\u26AA"
+            buttonArray[4]!![3].text = "\u26AA"
+            buttonArray[4]!![4].text = "\u2B24"
 
-                val buttonId: String = "bt$i$j"
-                val resId = resources.getIdentifier(buttonId, "ID", packageName)
-                buttonArray[i]!![j] = findViewById(resId)
-                buttonArray[i]!![j].setOnClickListener(this)
-            }
-        }
-    }*/
+        }*/
+    }
 
-        /* override fun onClick(v: View?) {
+    override fun onClick(v: View?) {
 
         val isSelected = v as Button
 
         if (blackTurn) {
 
-            if (checkForValidPlace()) {
+            if (checkForValidPlaceBlack() == isSelected.id) {
 
                 //set the black color to the button
                 // v.setBackgroundColor(resources.getColor(R.color.))
@@ -178,11 +133,90 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun checkForValidPlace(): Boolean {
+    private fun checkForValidPlaceBlack(): Int {
+
+        val id: Int = 0
+
+        var placeBlack = arrayOfNulls<Array<String>?>(64)
+
+        placeBlack = Array(8) {
+            Array(8) {
+                String()
+            }
+        }
+        for (i in 0..7) {
+            for (j in 0..7) {
+
+                placeBlack[i]!![j] = buttonArray[i]!![j].text.toString()
+
+            }
+        }
+
+        if (buttonArray[0]!![0].text == "B") {
+
+            for (i in 2..7) {
+                while (buttonArray[1]!![0].text == "W" &&
+                    (buttonArray[i]!![0].text == "" || buttonArray[i]!![0].text == "W")
+                ) {
+
+                    if (buttonArray[i]!![0].text == "") {
+                        return buttonArray[i]!![0].id
+                    } else {
+                        return id
+                    }
+                }
+            }
+
+            return id
+        }
+
+        if (buttonArray[0]!![7].text == "B") {
 
 
-        return false
+            return id
+        }
 
-    }*/
+        if (buttonArray[7]!![0].text == "B") {
+
+
+            return id
+        }
+
+        if (buttonArray[7]!![7].text == "B") {
+
+
+            return id
+        }
+
+        for (i in 1..6) {
+
+            if (buttonArray[i]!![0].text == "B") {
+
+                return id
+            }
+
+            if (buttonArray[i]!![7].text == "B") {
+
+                return id
+            }
+        }
+
+        for (j in 1..6) {
+
+            if (buttonArray[0]!![j].text == "B") {
+
+                return id
+            }
+
+            if (buttonArray[7]!![j].text == "B") {
+
+                return id
+            }
+        }
+
+
+        return id
+
     }
 }
+

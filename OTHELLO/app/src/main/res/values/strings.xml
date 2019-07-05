@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">OTHELLO</string>
+    <string name="big_black_circle">#U+2B24</string>
+    <string name="big_White_circle">#U+25EF</string>
+    <string name="small_circle">565</string>
+
 </resources>
