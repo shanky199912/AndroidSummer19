@@ -27,7 +27,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-         setContentView(R.layout.activity_main)
+        // setContentView(R.layout.activity_main)
 
         buttonArray = Array(8) {
 
@@ -53,24 +53,23 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         /**
          * Code for the dynamic creation of Buttons
          */
+
         ll = LinearLayout(this)
         ll.orientation = LinearLayout.HORIZONTAL
+
 
         ll.layoutParams = LinearLayout.LayoutParams(
             LinearLayout.LayoutParams.WRAP_CONTENT,
             LinearLayout.LayoutParams.WRAP_CONTENT
         )
 
+
         ll1 = LinearLayout(this)
         ll1.orientation = LinearLayout.VERTICAL
 
-        ll1.layoutParams = LinearLayout.LayoutParams(
-            LinearLayout.LayoutParams.WRAP_CONTENT,
-            LinearLayout.LayoutParams.WRAP_CONTENT, 1.0f
-        )
-
+/*
         ll.removeAllViews()
-        ll1.removeAllViews()
+        ll1.removeAllViews()*/
 
         button = Array(8) {
             Array(8) {
@@ -85,38 +84,45 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
 
         for (i in 0..7) {
 
-            /*llayout.forEach {
-
-                val apply = it?.apply {*/
-
+            ll1.layoutParams = LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.WRAP_CONTENT,
+                LinearLayout.LayoutParams.WRAP_CONTENT,1f
+            )
 
             for (j in 0..7) {
 
-               button[i]!![j].layoutParams = LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT,
-                   LinearLayout.LayoutParams.WRAP_CONTENT)
-                button[i]!![j].setBackgroundColor(resources.getColor(R.color.colorPrimaryDark))
-                /*if (button[i]!![j].parent != null) {
+                button[i]!![j].layoutParams = LinearLayout.LayoutParams(
+                    LinearLayout.LayoutParams.WRAP_CONTENT,
+                    LinearLayout.LayoutParams.WRAP_CONTENT
+                )
 
-                    (button[i]!![j].parent as ViewGroup).removeView(button[i]!![j])
-                }*/
+                button[i]!![j].setBackgroundColor(resources.getColor(R.color.dark_orange))
+                val params = button[i]!![j].layoutParams as LinearLayout.LayoutParams
+                params.setMargins(6, 6, 0, 0)
+                button[i]!![j].layoutParams = params
+
+                if (button[i]!![j].parent != null) (button[i]!![j].parent as ViewGroup).removeView(button[i]!![j])
                 ll1.addView(button[i]!![j])
             }
 
             if (ll1.parent != null) {
                 (ll1.parent as ViewGroup).removeView(ll1)
             }
+
             ll.addView(ll1)
         }
 
+        setContentView(ll)
 
-       /* startGame.setOnClickListener {
 
-            buttonArray[3]!![3].text = "\u2B24"
-            buttonArray[3]!![4].text = "\u26AA"
-            buttonArray[4]!![3].text = "\u26AA"
-            buttonArray[4]!![4].text = "\u2B24"
+        /* startGame.setOnClickListener {
 
-        }*/
+             buttonArray[3]!![3].text = "\u2B24"
+             buttonArray[3]!![4].text = "\u26AA"
+             buttonArray[4]!![3].text = "\u26AA"
+             buttonArray[4]!![4].text = "\u2B24"
+
+         }*/
     }
 
     override fun onClick(v: View?) {
