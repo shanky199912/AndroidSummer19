@@ -156,9 +156,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         whiteTv.layoutParams = params2
 
         ll3.addView(whiteTv)
-
         ll2.addView(ll3)
-
         ll2.addView(ll)
 
 
