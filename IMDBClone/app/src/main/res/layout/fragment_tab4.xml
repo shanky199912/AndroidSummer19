@@ -3,16 +3,16 @@
               xmlns:tools="http://schemas.android.com/tools"
               android:layout_width="match_parent"
               android:layout_height="match_parent"
-              tools:context=".TabbedLayout.tab2"
+              tools:context=".TabbedLayout.Tab4"
               android:orientation="vertical">
 
     <!-- TODO: Update blank fragment layout -->
+
     <androidx.recyclerview.widget.RecyclerView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/rcvUpcoming"
+            android:id="@+id/rcvPopular"
             android:layout_margin="10dp"
             android:padding="5dp"/>
-
 
 </LinearLayout>

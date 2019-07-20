@@ -1,92 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-            xmlns:tools="http://schemas.android.com/tools"
-            xmlns:app="http://schemas.android.com/apk/res-auto"
-            android:layout_width="match_parent" android:layout_height="wrap_content">
-    <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            tools:context=".movieFragment"
-            android:orientation="vertical">
+
+<LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        xmlns:tools="http://schemas.android.com/tools"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        tools:context=".movieFragment"
+        android:orientation="vertical"
+        xmlns:android="http://schemas.android.com/apk/res/android">
 
 
         <!-- TODO: Update blank fragment layout -->
 
-
-        <!-- <TextView
-                 android:layout_width="wrap_content"
-                 android:layout_height="wrap_content"
-                 android:id="@+id/textNowShowing"
-                 android:text="Now Showing"
-                 android:textStyle="bold"
-                 android:textSize="25sp"
-                 android:layout_margin="10dp"
-                 android:padding="10dp"
-
-         />
-
-         <androidx.recyclerview.widget.RecyclerView
-                 android:layout_width="wrap_content"
-                 android:layout_height="wrap_content"
-                 android:id="@+id/rcvNowShowing"
-                 android:layout_margin="10dp"
-                 android:padding="5dp"/>
-
-         <TextView
-                 android:layout_width="wrap_content"
-                 android:layout_height="wrap_content"
-                 android:id="@+id/textPopular"
-                 android:text="Popular "
-                 android:textStyle="bold"
-                 android:textSize="25sp"
-                 android:layout_margin="20dp"
-                 android:padding="10dp"
-
-         />
-         <androidx.recyclerview.widget.RecyclerView
-                 android:layout_width="wrap_content"
-                 android:layout_height="wrap_content"
-                 android:id="@+id/rcvPopular"
-                 android:layout_margin="10dp"
-                 android:padding="5dp"/>
-
-         <TextView
-                 android:layout_width="wrap_content"
-                 android:layout_height="wrap_content"
-                 android:id="@+id/textUpcoming"
-                 android:text="Upcoming"
-                 android:textStyle="bold"
-                 android:textSize="25sp"
-                 android:layout_margin="20dp"
-                 android:padding="10dp"
-
-         />
-
-         <androidx.recyclerview.widget.RecyclerView
-                 android:layout_width="wrap_content"
-                 android:layout_height="wrap_content"
-                 android:id="@+id/rcvUpcoming"
-                 android:layout_margin="10dp"
-                 android:padding="5dp"/>
-
-         <TextView
-                 android:layout_width="wrap_content"
-                 android:layout_height="wrap_content"
-                 android:id="@+id/textTopRated"
-                 android:text="Top Rated"
-                 android:textStyle="bold"
-                 android:textSize="25sp"
-                 android:layout_margin="20dp"
-                 android:padding="10dp"
-
-         />
-
-         <androidx.recyclerview.widget.RecyclerView
-                 android:layout_width="wrap_content"
-                 android:layout_height="wrap_content"
-                 android:id="@+id/rcvTopRated"
-                 android:layout_margin="10dp"
-                 android:padding="5dp"/>-->
 
         <com.google.android.material.tabs.TabLayout
                 android:layout_width="match_parent"
@@ -108,14 +33,11 @@
 
         <androidx.viewpager.widget.ViewPager
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:id="@+id/pager"
-                android:background="#fff"
-                app:layout_behavior="@string/appbar_scrolling_view_behavior"
                 android:visibility="visible">
 
         </androidx.viewpager.widget.ViewPager>
 
 
     </LinearLayout>
-</ScrollView>

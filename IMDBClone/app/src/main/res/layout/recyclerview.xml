@@ -1,47 +1,90 @@
 <?xml version="1.0" encoding="utf-8"?>
-
-
-<FrameLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto"
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-    <ImageView android:layout_width="match_parent"
-               android:layout_height="300dp"
-               android:id="@+id/imgMov"
-               android:src="@drawable/avengers"
-    />
+    <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_margin="20dp"
+            android:id="@+id/crdview"
+            android:layout_height="wrap_content"
+    >
 
-    <TextView android:layout_width="wrap_content"
-              android:id="@+id/textMovName"
-              android:text="Avengers End Game"
-              android:layout_marginTop="260dp"
-              android:textSize="25sp"
-              android:layout_marginStart="10dp"
-              android:layout_height="wrap_content"/>
+        <LinearLayout android:layout_width="match_parent"
+                      android:layout_height="wrap_content"
+                      android:orientation="horizontal">
 
-    <TextView android:layout_width="wrap_content"
-              android:id="@+id/textMovRat"
-              android:text="3.8"
-              android:layout_marginTop="260dp"
-              android:layout_marginStart="350dp"
-              android:textSize="25sp"
-              android:layout_height="wrap_content"/>
+            <ImageView android:layout_width="130dp"
+                       android:layout_height="150dp"
+                       android:id="@+id/imgmovie"
+                       android:src="@drawable/avengers"
+                       android:padding="5dp"
+            />
 
-    <LinearLayout android:layout_width="match_parent"
-                  android:layout_height="wrap_content"
-                  android:orientation="horizontal">
+            <LinearLayout android:layout_width="match_parent"
+                          android:layout_height="wrap_content"
+                          android:orientation="vertical">
+
+                <TextView android:layout_width="match_parent"
+                          android:layout_height="70dp"
+                          android:id="@+id/txtmovname"
+                          android:textSize="18sp"
+                          android:layout_margin="5dp"
+                          android:text="Spider Man Home Coming"
+                          android:textStyle="bold|italic"
+                          android:padding="5dp"
+                />
+
+                <LinearLayout android:layout_width="match_parent"
+                              android:layout_height="wrap_content"
+                              android:orientation="horizontal"
+                              android:gravity="center">
+
+                    <TextView android:layout_width="wrap_content"
+                              android:layout_height="wrap_content"
+                              android:id="@+id/txtRat"
+                              android:text="5.0"
+                              android:padding="5dp"
+                              android:textSize="15sp"
+                              android:textStyle="bold"
+                    />
+
+                    <ImageView android:layout_width="30dp"
+                               android:id="@+id/imgStar"
+                               android:layout_height="30dp"
+                               android:padding="2dp"
+                               android:src="@drawable/star"/>
+
+                </LinearLayout>
+
+                <LinearLayout android:layout_width="match_parent"
+                              android:layout_height="wrap_content"
+                              android:orientation="horizontal">
+
+                    <TextView android:layout_width="wrap_content"
+                              android:layout_height="wrap_content"
+                              android:textStyle="normal|italic"
+                              android:id="@+id/txtGenre"
+                              android:textSize="14sp"
+                              android:padding="2dp"
+                              android:text="Action, Adventure, sci-fi"/>
 
 
-    <TextView android:layout_width="wrap_content"
-              android:id="@+id/textMovGenre"
-              android:text="sci fic , action , adventure"
-              android:layout_marginTop="300dp"
-              android:layout_marginStart="10dp"
-              android:textSize="20sp"
-              android:layout_height="wrap_content"/>
+                    <ImageView android:layout_width="20dp"
+                               android:layout_height="25dp"
+                               android:layout_marginStart="50dp"
+                               android:id="@+id/imgHeart"
+                               android:src="@drawable/heart"
+                    />
 
-    </LinearLayout>
+                </LinearLayout>
 
-</FrameLayout>
+            </LinearLayout>
+
+        </LinearLayout>
+
+
+    </androidx.cardview.widget.CardView>
+</LinearLayout>
