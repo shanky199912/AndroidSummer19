@@ -47,10 +47,13 @@ class tab1 : Fragment() {
 
             response?.let {
 
-                mNowShowing = response.body()!!.results!!
-                val mNowShowingAdapter = MovieAdapter(context!!, mNowShowing)
-                view.rcvNowShowing.layoutManager = LinearLayoutManager(context, RecyclerView.VERTICAL, false)
-                view.rcvNowShowing.adapter = mNowShowingAdapter
+                activity?.runOnUiThread {
+
+                    mNowShowing = response.body()!!.results!!
+                    val mNowShowingAdapter = MovieAdapter(context!!, mNowShowing)
+                    view.rcvNowShowing.layoutManager = LinearLayoutManager(context, RecyclerView.VERTICAL, false)
+                    view.rcvNowShowing.adapter = mNowShowingAdapter
+                }
 
             }
 

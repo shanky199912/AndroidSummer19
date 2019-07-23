@@ -11,10 +11,13 @@ import androidx.recyclerview.widget.RecyclerView
 
 import com.example.imdbclone.R
 import com.example.imdbclone.adapter.MovieAdapter
-import com.example.imdbclone.adapter.MovieAdapterSmall
+import com.example.imdbclone.networking.Client
+import com.example.imdbclone.networking.Client.API_KEY
+import com.example.imdbclone.networking.Client.retrofitCallBack
+import com.example.imdbclone.networking.Client.service
 import com.example.imdbclone.networking.movies.ResultsItem
 import kotlinx.android.synthetic.main.fragment_tab4.*
-import kotlinx.android.synthetic.main.fragment_tab4.view.*
+
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -27,20 +30,35 @@ private const val ARG_PARAM2 = "param2"
  */
 class Tab4 : Fragment() {
 
-    private var mPopular = arrayListOf<ResultsItem>()
+    private var mPopular = arrayListOf<ResultsItem?>()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        val view =  inflater.inflate(R.layout.fragment_tab4, container, false)
-
-        val mPopularAdapter = MovieAdapterSmall(context!!, mPopular)
+        val view = inflater.inflate(R.layout.fragment_tab4, container, false)
 
 
-        view.rcvPopular.layoutManager = LinearLayoutManager(context,RecyclerView.VERTICAL,false)
-        view.rcvPopular.adapter = mPopularAdapter
+        service.listPopular(API_KEY, 1, "US").enqueue(retrofitCallBack { response, throwable ->
+
+            response?.let {
+
+                activity?.runOnUiThread {
+
+                    mPopular = response.body()?.results as ArrayList<ResultsItem?>
+
+                    val mPopularAdapter = MovieAdapter(context!!, mPopular)
+                    rcvPopular.layoutManager = LinearLayoutManager(context, RecyclerView.VERTICAL, false)
+                    rcvPopular.adapter = mPopularAdapter
+                }
+
+            }
+
+            throwable?.let {
+
+            }
+        })
 
         return view
     }

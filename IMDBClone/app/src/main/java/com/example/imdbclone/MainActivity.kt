@@ -1,8 +1,6 @@
 package com.example.imdbclone
 
 import android.os.Bundle
-import com.google.android.material.floatingactionbutton.FloatingActionButton
-import com.google.android.material.snackbar.Snackbar
 import androidx.core.view.GravityCompat
 import androidx.appcompat.app.ActionBarDrawerToggle
 import android.view.MenuItem
@@ -11,6 +9,10 @@ import com.google.android.material.navigation.NavigationView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import android.view.Menu
+import com.example.imdbclone.NetworkCalls.aboutFragment
+import com.example.imdbclone.NetworkCalls.favoritesFragment
+import com.example.imdbclone.NetworkCalls.movieFragment
+import com.example.imdbclone.NetworkCalls.tvShowFragment
 
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
 
@@ -22,8 +24,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         supportActionBar?.title = "Movies"
 
         supportFragmentManager.beginTransaction()
-            .replace(R.id.container,movieFragment()).commit()
-
+            .replace(R.id.container, movieFragment()).commit()
 
         val drawerLayout: DrawerLayout = findViewById(R.id.drawer_layout)
         val navView: NavigationView = findViewById(R.id.nav_view)
@@ -35,7 +36,9 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
         navView.setNavigationItemSelectedListener(this)
 
+
     }
+
 
     override fun onBackPressed() {
         val drawerLayout: DrawerLayout = findViewById(R.id.drawer_layout)
@@ -68,7 +71,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             R.id.nav_movies -> {
                 // Handle the Movie - open the movie fragment
                 supportFragmentManager.beginTransaction()
-                    .replace(R.id.container,movieFragment()).commit()
+                    .replace(R.id.container, movieFragment()).commit()
                 val toolbar: Toolbar = findViewById(R.id.toolbar)
                 setSupportActionBar(toolbar)
                 supportActionBar?.title = "Movies"
@@ -76,7 +79,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             R.id.nav_tvShows -> {
                 //open up tv show fragment
                 supportFragmentManager.beginTransaction()
-                    .replace(R.id.container,tvShowFragment()).commit()
+                    .replace(R.id.container, tvShowFragment()).commit()
                 val toolbar: Toolbar = findViewById(R.id.toolbar)
                 setSupportActionBar(toolbar)
                 supportActionBar?.title = "Tv Shows"
@@ -84,7 +87,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             R.id.nav_favorites -> {
                 //open favorites fragment
                 supportFragmentManager.beginTransaction()
-                    .replace(R.id.container,favoritesFragment()).commit()
+                    .replace(R.id.container, favoritesFragment()).commit()
                 val toolbar: Toolbar = findViewById(R.id.toolbar)
                 setSupportActionBar(toolbar)
                 supportActionBar?.title = "Favorites"
@@ -92,7 +95,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             R.id.nav_about -> {
                 //open about fragment
                 supportFragmentManager.beginTransaction()
-                    .replace(R.id.container,aboutFragment()).commit()
+                    .replace(R.id.container, aboutFragment()).commit()
                 val toolbar: Toolbar = findViewById(R.id.toolbar)
                 setSupportActionBar(toolbar)
                 supportActionBar?.title = "About"

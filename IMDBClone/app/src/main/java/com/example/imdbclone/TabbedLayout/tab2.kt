@@ -47,12 +47,17 @@ class tab2 : Fragment() {
 
             response?.let {
 
-                mUpcoming = response.body()?.results as ArrayList<ResultsItem?>
+                activity!!.runOnUiThread {
 
-                val mUpcomingAdapter = MovieAdapter(context!!, mUpcoming)
 
-                view.rcvUpcoming.layoutManager = LinearLayoutManager(context, RecyclerView.VERTICAL, false)
-                view.rcvUpcoming.adapter = mUpcomingAdapter
+                    mUpcoming = response.body()?.results as ArrayList<ResultsItem?>
+
+                    val mUpcomingAdapter = MovieAdapter(context!!, mUpcoming)
+
+                    view.rcvUpcoming.layoutManager = LinearLayoutManager(context, RecyclerView.VERTICAL, false)
+                    view.rcvUpcoming.adapter = mUpcomingAdapter
+
+                }
 
             }
 

@@ -12,6 +12,8 @@ object Client {
 
      const val API_KEY = "e3049387f1c52e0b75b406898b780872"
 
+    //const val Path_Image = "https://image.tmdb.org/t/p/original"
+
 
     private val retrofitClient = Retrofit.Builder()
         .baseUrl(BASE_URL)

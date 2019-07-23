@@ -1,11 +1,9 @@
 package com.example.imdbclone.networking
 
-import com.example.imdbclone.networking.movies.ResponseNowShowing
-import com.example.imdbclone.networking.movies.ResponsePopular
-import com.example.imdbclone.networking.movies.ResponseTopRated
-import com.example.imdbclone.networking.movies.ResponseUpcoming
+import com.example.imdbclone.networking.movies.*
 import retrofit2.Call
 import retrofit2.http.GET
+import retrofit2.http.Path
 import retrofit2.http.Query
 
 interface TmdbService {
@@ -37,5 +35,38 @@ interface TmdbService {
         @Query("page") page: Int,
         @Query("region") region: String
     ): Call<ResponseTopRated>
+
+    @GET("movie/{id}")
+    fun getMovieDetails(
+        @Path("id") movieId: Int,
+        @Query("API KEY") apiKey: String
+    ):Call<Movie>
+
+
+    @GET("movie/{id}/videos")
+    fun getMovieVideos(
+        @Path("id") movieId: Int,
+        @Query("API KEY") apiKey: String
+    ): Call<VideoResponse>
+
+
+    @GET("movie/{id}/credits")
+    fun getMovieCast(
+        @Path("id") movieId: Int,
+        @Query("API KEY") apiKey: String
+    ): Call<ResponseMovieCast>
+
+    @GET("movie/{id}/similar")
+    fun getSimilarMovies(
+        @Path("id") movieId: Int,
+        @Query("API KEY") apiKey: String,
+        @Query("page") page: Int
+    ): Call<SimilarMovies>
+
+
+    @GET("genre/movie/list")
+    fun getMovieGenreList(
+        @Query("api key") apiKey: String
+    )
 
 }
